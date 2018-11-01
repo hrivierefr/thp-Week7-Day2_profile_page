@@ -1,0 +1,21 @@
+<%= form_for @gossip, url: { action: (if @gossip.id != nil 'update' else 'create'), :controller=>"gossips"} do |f| %>
+  
+  <input class="form-control col-sm-10" type="hidden" value = '<%= @gossip.id %>' username : <%= f.text_field :id %>
+
+  <div class="form-group">
+    <label for="username" class="col-form-label"> Balance ta rumeur </label>
+    <input class="form-control" type="text" placeholder= '<%= @gossip.content %>' value = '<%= @gossip.content %>' username : <%= f.text_field :content %>
+  </div>
+
+  <div class="form-group">
+    <label for="username" class="col-form-label">Veux-tu préciser ton nom ?</label>
+    <input class="form-control" type="text" placeholder= '<%= @gossip.author %>' value = 'anonymous' username : 
+    <%= f.text_field :author %>
+  </div>
+
+
+  <div class="form-group row text-center">
+    <button type="submit" class="btn btn-success text-center">Editer la rumeur</button>
+  </div>
+
+<% end %>

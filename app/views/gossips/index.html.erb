@@ -1,0 +1,29 @@
+<% @gossips.each_with_index do |g, i| %>
+  <% if i % 3 == 0 %>
+    <div class='row mb-3'>
+  <% end %>
+  <div class= 'col-4'>
+    <div class="card text-center mb-3 shadow-lg">
+      <div class="card-header">Rumeur n°<%= i+1 %></div>
+      <div class="card-body">
+        <p class="card-text"> <%= g.content %> </p>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago<% if g.author_id != 0 %>, by <%= g.author.name %>
+        <% end %>
+      </div>
+      <div class="card-footer text-center text-muted">
+        <%= link_to 'Show', gossip_path(g.id), class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_gossip_path(g.id), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', gossip_path(g.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+  <% if i % 3 == 2 || i+1 == @gossips.size %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class= 'text-center'>
+  <%= link_to 'New Gossip', new_gossip_path, class:'btn btn-primary' %>
+</div>

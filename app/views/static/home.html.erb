@@ -1,0 +1,36 @@
+<div>
+  	<h1>Bienvenue !</h1>
+
+  	<h3>
+  		Voici les derniers gossips postés sur le réseau :
+  	</h3>
+
+  	<%= 3.times do%>
+  		<% @last_gossips.each do |g| %>
+  			<div class= 'col-4'>
+  				<div class="card text-center ">
+  					<div class="card-header">Rumeur n°<%= g.id %></div>
+					<div class="card-body">
+			    		<p class="card-text"> <%= g.content %> </p>
+		  			</div>
+		  			<div class="card-footer text-muted">
+   						2 days ago<% if g.author_id != 0 %>, by <%= g.author.name %>
+   						<% end %>
+ 					</div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+
+	<div class= "text-center">
+		<%= link_to 'Voir plus', gossips_path, class:"btn btn-primary" %>
+	</div>
+	
+	<h3>Toi aussi, gossip au calme</h3>
+
+	<%= render 'gossips/form' %>
+
+	<%= link_to "Enregistre-toi !", root_path, class: "btn btn-lg btn-primary" %>
+
+</div>
+
