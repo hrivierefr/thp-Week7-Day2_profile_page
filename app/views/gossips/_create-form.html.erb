@@ -1,0 +1,5 @@
+<%= form_for @gossip, method: 'create' do |f| %>
+  Balance ta rumeur<%= f.text_area :content, class:"form-control col-sm-10"%><br />
+  Veux-tu préciser ton nom ?<%= f.text_field :author, class:"form-control col-sm-10"%><br />
+  <%= f.submit 'Créer cette rumeur' , class: 'form-group text-center btn btn-info'%>
+<% end %>

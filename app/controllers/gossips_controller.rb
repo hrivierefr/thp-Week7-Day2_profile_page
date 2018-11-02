@@ -9,11 +9,11 @@ class GossipsController < ApplicationController
 
   # GET /gossips/1
   def show
+    @comment = Comment.new
   end
 
   # GET /gossips/new
   def new
-    @gossip = Gossip.find(params[:id])
   end
 
   # GET /gossips/1/edit
@@ -31,12 +31,14 @@ class GossipsController < ApplicationController
         format.html { render :new }
       end
     end
+
+    redirect_to gossip_path(@gossip)
+
   end
 
   # PATCH/PUT /gossips/1
   # PATCH/PUT /gossips/1.json
   def update
-    puts @gossip_params
     @gossip.update(gossip_params)
     redirect_to gossip_path(@gossip)
   end

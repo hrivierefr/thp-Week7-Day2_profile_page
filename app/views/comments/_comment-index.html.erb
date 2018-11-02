@@ -1,0 +1,25 @@
+<% @gossip.comments.each_with_index do |c, i| %>
+  <% if i % 3 == 0 %>
+    <div class='row mb-3'>
+  <% end %>
+  <div class= 'col-4'>
+    <div class="card text-center shadow-lg">
+
+      <div class="card-body">
+        <p class="card-text"> <%= c.content %> </p>
+      </div>
+
+      <div class="card-footer blockquote-footer text-muted">
+        Postée il y 2 jours<% if c.commenter != 'anonymous' %>, par <%= c.commenter.name %><% end %>
+      </div>
+
+      <div class="card-footer text-center text-muted">
+        <%= link_to 'Supprimer', gossip_comment_path(c.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer ce commentaire ?' }, class: 'btn btn-danger mb-1' %>
+      </div>
+    </div>
+  </div>
+  <% if i % 3 == 2 %>
+    </div>
+  <% end %>
+<% end %> 
+</div>

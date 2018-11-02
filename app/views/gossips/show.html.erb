@@ -4,11 +4,9 @@
     <div class="card-header">
       <div class='row'>
         <div class='col-6 text-left'><strong>Rumeur n°<%= @gossip.id %></strong></div>
-        <div class='col-6 text-right'>
-
+        <div class='col-6 text-right button font-weight-bold'>
           <a data-method="create" href="<%= gossip_likes_path(@gossip.id) %>"> <i class="fas fa-thumbs-up"></i>  <%= @gossip.likes.count %>
           </a>
-          
         </div>
       </div>
     </div>
@@ -16,15 +14,24 @@
     <div class="card-body">
       <p class="card-text"> <%= @gossip.content %> </p>
     </div>
-    
-    <div class="card-footer text-muted">
-      2 days ago<% if @gossip.author != nil %>, by <%= @gossip.author.name %><% end %>
+
+    <div class="card-footer text-muted blockquote-footer">
+      Postée il y 2 jours<% if @gossip.author != nil %>, par <%= @gossip.author.name %><% end %>
     </div>
     <div class="card-footer text-center text-muted">
-      <%= link_to 'Edit', edit_gossip_path(@gossip.id), class: 'btn btn-primary' %>
-      <%= link_to 'Destroy', gossip_path(@gossip.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <%= link_to 'Editer', edit_gossip_path(@gossip.id), class: 'btn btn-primary' %>
+      <%= link_to 'Supprimer', gossip_path(@gossip.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </div>
   </div>
+
+  <div>
+    <%= render 'comments/comment-index' %>
+  </div>
+
+  <div>
+    <%= render 'comments/comment-form' %>
+  </div>
+
 </div>
 
 <%= link_to 'Back', gossips_path %>

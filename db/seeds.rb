@@ -15,10 +15,17 @@
 		)
 end
 
-5.times do
+25.times do
 	potin = Gossip.create!(
-		author: User.find(rand(9)+1),
-		content: Faker::Lorem.paragraph
+		author: User.find(rand(User.first.id..User.last.id)),
+		content: Faker::StarWars.quote
 		)
 end
 
+25.times do
+	comment = Comment.create!(
+		commenter: User.find(rand(User.first.id..User.last.id)),
+		gossip_id: Gossip.find(rand(Gossip.first.id..Gossip.last.id)).id,
+		content: Faker::GreekPhilosophers.quote
+		)
+end

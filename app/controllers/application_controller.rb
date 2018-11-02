@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-	@visitor = 1 
+	@@visitors = 0
 end

@@ -3,27 +3,39 @@
     <div class='row mb-3'>
   <% end %>
   <div class= 'col-4'>
-    <div class="card text-center mb-3 shadow-lg">
-      <div class="card-header">Rumeur n°<%= i+1 %></div>
+    <div class="card text-center shadow-lg">
+
+      <div class="card-header">
+        <div class='row'>
+          <div class='col-8 text-left'><strong>Rumeur n°<%= g.id %></strong></div>
+          <div class='col-2 button p-0 text-right font-weight-bold'>
+            <i class="fas fa-comments"></i>  <%= g.comments.count %> 
+          </div>
+          <div class='col-2 button p-0 font-weight-bold'><a data-method="create" href="<%= gossip_likes_path(g.id) %>" class='card-link'><i class="fas fa-thumbs-up"></i>  <%= g.likes.count %></a>
+          </div>
+        </div>
+      </div>
+
       <div class="card-body">
         <p class="card-text"> <%= g.content %> </p>
       </div>
-      <div class="card-footer text-muted">
-        2 days ago<% if g.author_id != 0 %>, by <%= g.author.name %>
-        <% end %>
+
+      <div class="card-footer blockquote-footer text-muted">
+        Postée il y 2 jours<% if g.author.name != 'anonymous' %>, par <%= g.author.name %><% end %>
       </div>
+
       <div class="card-footer text-center text-muted">
-        <%= link_to 'Show', gossip_path(g.id), class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_gossip_path(g.id), class: 'btn btn-primary' %>
-        <%= link_to 'Destroy', gossip_path(g.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Détails', gossip_path(g.id), class: 'btn btn-info mb-1' %>
+        <%= link_to 'Editer', edit_gossip_path(g.id), class: 'btn btn-primary  mb-1' %>
+        <%= link_to 'Supprimer', gossip_path(g.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer cette rumeur ?' }, class: 'btn btn-danger mb-1' %>
       </div>
     </div>
   </div>
-  <% if i % 3 == 2 || i+1 == @gossips.size %>
+  <% if i % 3 == 2 %>
     </div>
   <% end %>
 <% end %>
-
-<div class= 'text-center'>
-  <%= link_to 'New Gossip', new_gossip_path, class:'btn btn-primary' %>
+<div class='text-center m-auto'>
+  <%= link_to 'Publier une nouvelle rumeur', new_gossip_path, class:'btn btn-success' %>
+  </div>
 </div>

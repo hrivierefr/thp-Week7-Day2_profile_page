@@ -1,0 +1,6 @@
+<%= form_for @gossip, method: 'patch' do |f| %>
+  Balance ta rumeur<%= f.text_area :content, value: @gossip.content, class:"form-control col-sm-10"%><br />
+  Veux-tu préciser ton nom ?<%= f.text_field :author, value: @gossip.author.name, class:"form-control col-sm-10"%><br />
+  <%= f.text_field :id, type: 'hidden', value: @gossip.id  %> <br />
+  <%= f.submit 'Enregistrer cette rumeur' , class: 'form-group text-center btn btn-info'%>
+<% end %>

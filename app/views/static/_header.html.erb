@@ -1,20 +1,16 @@
-<div class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <nav class="navbar">
+<div class="navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar container">
 
       <%= link_to 'TheGossipProject', root_path, class:"navbar-brand" %>
 
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon text-right"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-          <%= link_to 'Toutes les rumeurs', gossips_path, class:'nav-item nav-link' %>
-
-          <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+          <li> <%= link_to 'Toutes les rumeurs', gossips_path, class:'nav-item nav-link' %>
+          </li>
         </ul>
 
         <form class="form-inline text-right my-2 my-lg-0">
@@ -22,7 +18,6 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
-      </div>
     </nav>
   </div>
 </div>
