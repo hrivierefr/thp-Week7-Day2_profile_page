@@ -7,7 +7,8 @@ class LikesController < ApplicationController
 			gossip_id: @gossip.id,
 			liker_id: User.find(rand(User.first.id..User.last.id)).id
 		)
-	    redirect_to gossip_path(@gossip)
+	    redirect_back(fallback_location: gossips_path)
+
 	end
 
 	def delete

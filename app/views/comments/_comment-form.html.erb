@@ -1,5 +1,6 @@
-<%= form_for :comment, method: 'create', url: @gossip.id.to_s+'/comments' do |f| %>
-  <%= f.text_area :content, placeholder: 'Votre commentaire ici' %><br />
-  <%= f.text_field :id, type: 'hidden', value: @gossip.id  %> <br />
-  <%= f.submit 'Publier votre commentaire' , class: 'form-group text-center btn btn-info'%>
+<%= form_for :comment, method: 'create', url: @gossip.id.to_s+'/comments', :authenticity_token => true do |f| %>
+  <%= f.text_area :content, placeholder: 'Votre commentaire ici', :required => 'required', class:"form-control col-10" %><br />
+  <%= f.hidden_field :commenter_id, value: User.find(rand(User.first.id..User.last.id)).id %>
+  <%= f.hidden_field :gossip_id, value: @gossip.id  %>
+  <%= f.submit 'Publier votre commentaire', class: 'form-group m-auto btn btn-info'%>
 <% end %>

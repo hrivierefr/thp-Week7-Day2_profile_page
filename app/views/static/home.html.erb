@@ -1,37 +1,16 @@
 <div>
-  	<h4>
-  		Voici les derniers gossips postés sur le réseau :
-  	</h4>
 
-
-	<div id="carouselExampleControls" class="carousel slide offset-1 col-10 mb-2" data-ride="carousel" data-interval="10">
-		<% @last_gossips.each_with_index do |g, i|%>
-	  		<div class="carousel-inner">
-	  			<% if i == 0 %>
-	    			<div class="carousel-item active">
-    			<% else %>
-	    			<div class="carousel-item">
-				<% end %>
-					<div class="card text-center d-block w-100">
-	  					<div class="card-header">Rumeur n°<%= g.id %></div>
-						<div class="card-body">
-				    		<p class="card-text"> <%= g.content %> </p>
-			  			</div>
-		  			    <div class="card-footer blockquote-footer text-muted">
-					        Postée il y 2 jours<% if g.author_id != 0 %>, par <%= g.author.name %><% end %>
-				        </div>
-					</div>
-				</div>
-			</div>
-		<% end %>
-	</div>
-
+	<% if Gossip.all.count >= 3 %>
+		<%= render 'carousel' %>
+	<% else %>
+		<h4> Il n'y a pas assez de rumeurs sur le site !!</h4>
+	<% end %>
 
 	<div class= "text-center mb-5">
 		<%= link_to 'Parcourir toutes les rumeurs', gossips_path, class:"btn btn-primary" %>
 	</div>
 	
-	<h4>Toi aussi, gossip au calme</h4>
+	<h4>A toi de gossiper</h4>
 	<div class= 'offset-3 col-6'>
 		<%= render 'gossips/create-form' %>
 	</div>

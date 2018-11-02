@@ -21,7 +21,7 @@
       </div>
 
       <div class="card-footer blockquote-footer text-muted">
-        Postée il y 2 jours<% if g.author.name != 'anonymous' %>, par <%= g.author.name %><% end %>
+        Postée il y 2 jours<% if g.anonymous == false %>, par <%= g.author.name %><% end %>
       </div>
 
       <div class="card-footer text-center text-muted">

@@ -1,15 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_gossip
-  before_action :set_comment
+  before_action :set_comment, only: [:destroy]
 
   	def create
-  		comment = params[:comment]
-		Comment.create(
-			gossip_id: comment[:id],
-			commenter_id: User.find(rand(9)+1).id,
-			content: comment[:content]
-		)
-	    redirect_to gossip_path(@gossip.id)
+  		Comment.create!(comment_params)
+      redirect_back(fallback_location: gossips_path)
   	end
 
   	def destroy
@@ -17,12 +12,17 @@ class CommentsController < ApplicationController
 	    redirect_to gossip_path(@gossip.id)
   	end
 
-  	private
+	private
     # Use callbacks to share common setup or constraints between actions.
 	def set_gossip
-  		@gossip = Gossip.find(params['id'])
+		@gossip = Gossip.find(params['gossip_id'])
 	end
 	def set_comment
-  		@comment = Comment.find(params['id'])
+  	@comment = Comment.find(params['id'])
 	end
+
+  def comment_params
+    params.require(:comment).permit(:content, :commenter_id, :gossip_id)
+  end
+
 end

@@ -14,6 +14,7 @@ class GossipsController < ApplicationController
 
   # GET /gossips/new
   def new
+    @gossip = Gossip.new
   end
 
   # GET /gossips/1/edit
@@ -22,18 +23,9 @@ class GossipsController < ApplicationController
 
   # POST /gossips
   def create
-    @gossip = Gossip.new(gossip_params)
-
-    respond_to do |format|
-      if @gossip.save
-        format.html { redirect_to gossip_path(@gossip), notice: 'Gossip was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
-
+    puts gossip_params
+    @gossip = Gossip.create(gossip_params)
     redirect_to gossip_path(@gossip)
-
   end
 
   # PATCH/PUT /gossips/1
@@ -60,6 +52,6 @@ class GossipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gossip_params
-      params.require(:gossip).permit(:index, :new, :create, :edit, :update, :delete, :show)
+      params.require(:gossip).permit(:content, :author_id, :anonymous)
     end
 end

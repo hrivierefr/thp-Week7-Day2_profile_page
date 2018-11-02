@@ -16,22 +16,19 @@
     </div>
 
     <div class="card-footer text-muted blockquote-footer">
-      Postée il y 2 jours<% if @gossip.author != nil %>, par <%= @gossip.author.name %><% end %>
+      Postée il y 2 jours<% if @gossip.anonymous == false %>, par <%= @gossip.author.name %><% end %>
     </div>
     <div class="card-footer text-center text-muted">
       <%= link_to 'Editer', edit_gossip_path(@gossip.id), class: 'btn btn-primary' %>
-      <%= link_to 'Supprimer', gossip_path(@gossip.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <%= link_to 'Supprimer', gossip_path(@gossip.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer cette rumeur?' }, class: 'btn btn-danger' %>
     </div>
   </div>
 
   <div>
     <%= render 'comments/comment-index' %>
-  </div>
-
-  <div>
-    <%= render 'comments/comment-form' %>
+    <div class='col-8 offset-2'>
+      <%= render 'comments/comment-form' %>
+    </div>
   </div>
 
 </div>
-
-<%= link_to 'Back', gossips_path %>
