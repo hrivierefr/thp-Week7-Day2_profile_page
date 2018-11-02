@@ -18,7 +18,8 @@ end
 25.times do
 	potin = Gossip.create!(
 		author: User.find(rand(User.first.id..User.last.id)),
-		content: Faker::StarWars.quote
+		content: Faker::StarWars.quote,
+		anonymous: false
 		)
 end
 
