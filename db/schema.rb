@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_144121) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "anonymous"
+    t.integer "anonymous"
     t.index ["author_id"], name: "index_gossips_on_author_id"
   end
 
