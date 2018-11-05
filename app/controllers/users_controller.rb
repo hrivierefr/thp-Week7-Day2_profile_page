@@ -27,8 +27,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    puts user_params
-    puts @user
     if @user.save
       log_in(@user)
       flash[:success] = "Vous êtes maintenant connecté !"
