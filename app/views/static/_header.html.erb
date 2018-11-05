@@ -12,15 +12,26 @@
           <li> <%= link_to 'Toutes les rumeurs', gossips_path, class:'nav-item nav-link' %>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 text-right">
-          <li>
-            <%=link_to 'Inscription', signup_path, class:"nav-item nav-link text-right" %>
-          </li>
 
-          <li>
-            <%=link_to 'Login', login_path, class:"nav-item nav-link text-right" %>
-          </li>
-        </ul>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0 text-right">
+            <% if logged_in? %>
+              <li>
+                <%=link_to 'Mon compte', user_path(@current_user.id), class:"nav-item nav-link text-right" %>
+              </li>
+              <li>
+                <%=link_to 'Se déconnecter', logout_path, method: :delete, class:"nav-item nav-link text-right" %>
+              </li>
+            <% else %>
+
+              <li>
+                <%=link_to 'Inscription', new_user_path, class:"nav-item nav-link text-right" %>
+              </li>
+              <li>
+                <%=link_to 'Login', login_path, class:"nav-item nav-link text-right" %>
+              </li>
+          
+            <% end %>
+          </ul>
       </div>
 
     </nav>

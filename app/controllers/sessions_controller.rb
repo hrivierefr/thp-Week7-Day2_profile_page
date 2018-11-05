@@ -1,18 +1,28 @@
 class SessionsController < ApplicationController
+  	
   	def new
-
   	end
 
   	def create
-  		puts session_params
-    	if User.find_by(email: session_params[:email]).authenticate(session_params[:password]) 
-	    	redirect_to root_path
+  		user = User.find_by(email: session_params[:email])
+    	if user
+    		if user.authenticate(session_params[:password])
+    			log_in(user)
+    			redirect_to user_path(user.id)
+    		else
+    			flash[:danger] = 'Mot de passe incorrect'
+				render 'new'
+    		end
 	    else
-		
+			flash[:danger] = 'Aucun utilisateur enregistré avec cet email'
+			render 'new'
 		end
 	end
 
 	def destroy
+	    session.delete(:user_id)
+		@current_user = nil
+		redirect_to root_path
 	end
 
 
@@ -20,8 +30,7 @@ class SessionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     
 	def session_params
-    	params.require(:session).permit(:new, :create, :destroy)
+    	params.require(:session).permit(:email, :password)
     end
+
 end
-
-

@@ -1,15 +1,22 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :edit, :update]
   # GET /users/1
   # GET /users/1.json
   def show
-    @comment_selection = @user.comments
-    @gossip_selection = @user.gossips
+    if current_user == @user
+      @comment_selection = @user.comments
+      @gossip_selection = @user.gossips
+    elsif logged_in?
+      flash[:danger] = "Vous ne pouvez pas accéder à ce compte !"
+      redirect_to user_path(current_user)
+    else 
+      redirect_to login_path
+    end
   end
 
   # GET /users/new
   def new
-    @user = User.new
   end
 
   # GET /users/1/edit
@@ -20,7 +27,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    redirect_to @user
+    puts user_params
+    puts @user
+    if @user.save
+      log_in(@user)
+      flash[:success] = "Vous êtes maintenant connecté !"
+      redirect_to user_path(@user)
+    else
+      render 'new'
+    end
   end
 
   # PATCH/PUT /users/1
@@ -43,6 +58,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:new, :create, :edit, :update, :show)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
