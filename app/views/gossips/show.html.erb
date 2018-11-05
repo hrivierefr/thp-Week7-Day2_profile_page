@@ -16,7 +16,7 @@
     </div>
 
     <div class="card-footer text-muted blockquote-footer">
-      Postée il y 2 jours<% if @gossip.anonymous == 0 %>, par <%= @gossip.author.name %><% end %>
+      Postée il y <%= pluralize(((Time.now - @gossip.created_at)/(3600*24)).to_i, 'jour' %><% if @gossip.anonymous == 0 %>, par <%= @gossip.author.name %><% end %>
     </div>
     <div class="card-footer text-center text-muted">
       <%= link_to 'Editer', edit_gossip_path(@gossip.id), class: 'btn btn-primary' %>

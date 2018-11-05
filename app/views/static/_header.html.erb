@@ -3,8 +3,8 @@
 
       <%= link_to 'TheGossipProject', root_path, class:"navbar-brand" %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon text-right"></span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -12,12 +12,27 @@
           <li> <%= link_to 'Toutes les rumeurs', gossips_path, class:'nav-item nav-link' %>
           </li>
         </ul>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 text-right">
+          <li>
+            <%=link_to 'Inscription', signup_path, class:"nav-item nav-link text-right" %>
+          </li>
+
+          <li>
+            <%=link_to 'Login', login_path, class:"nav-item nav-link text-right" %>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </div>
+</div>
+
+
+<!--
 
         <form class="form-inline text-right my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
-    </nav>
-  </div>
-</div>
+        -->

@@ -1,29 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h2>Vos informations</h2>
+<p>Votre nom d'utilisateur : <%= @user.name %></p>
+<p>Votre email : <%= @user.email %> </p>
+<%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: 'btn btn-primary' %>
 
-<p>
-  <strong>New:</strong>
-  <%= @user.new %>
-</p>
 
-<p>
-  <strong>Create:</strong>
-  <%= @user.create %>
-</p>
+<h2>Vos commentaires:</h2>
+<div>
+  <%= render 'comments/comment-index' %>
+</div>
 
-<p>
-  <strong>Edit:</strong>
-  <%= @user.edit %>
-</p>
 
-<p>
-  <strong>Update:</strong>
-  <%= @user.update %>
-</p>
-
-<p>
-  <strong>Show:</strong>
-  <%= @user.show %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h2>Vos gossips:</h2>
+<div>
+  <%= render 'gossips/gossip-index' %>
+</div>

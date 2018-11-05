@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
-  belongs_to :commenter, class_name: 'User', optional: true
-  belongs_to :gossip
+	belongs_to :commenter, class_name: 'User'
+	belongs_to :gossip
 end

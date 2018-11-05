@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
   	def destroy
   		@comment.destroy
-	    redirect_to gossip_path(@gossip.id)
+      redirect_back(fallback_location: gossips_path)
   	end
 
 	private

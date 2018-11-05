@@ -4,12 +4,13 @@ class GossipsController < ApplicationController
   # GET /gossips
   # GET /gossips.json
   def index
-    @gossips = Gossip.all
+    @gossip_selection = Gossip.all
   end
 
   # GET /gossips/1
   def show
     @comment = Comment.new
+    @comment_selection = @gossip.comments
   end
 
   # GET /gossips/new

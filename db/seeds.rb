@@ -8,10 +8,12 @@
 
 
 10.times do
+	@password = Faker::String.random(8)
 	user = User.create!(
 		name: Faker::Name.first_name,
 		email: Faker::Internet.email,
-		password: Faker::Name.last_name
+		password: @password,
+		password_confirmation: @password
 		)
 end
 

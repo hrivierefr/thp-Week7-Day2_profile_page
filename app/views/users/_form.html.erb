@@ -1,42 +1,7 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :new %>
-    <%= form.text_field :new %>
-  </div>
-
-  <div class="field">
-    <%= form.label :create %>
-    <%= form.text_field :create %>
-  </div>
-
-  <div class="field">
-    <%= form.label :edit %>
-    <%= form.text_field :edit %>
-  </div>
-
-  <div class="field">
-    <%= form.label :update %>
-    <%= form.text_field :update %>
-  </div>
-
-  <div class="field">
-    <%= form.label :show %>
-    <%= form.text_field :show %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= form_for :user, url: signup_path do |f| %>
+  <%= f.text_field :email, placeholder: 'Email', :required => 'required', class:"form-control" %><br />
+  <%= f.text_field :name, placeholder: "Nom d'utilisateur", :required => 'required', class:"form-control" %><br />
+  <%= f.password_field :password, placeholder: 'Mot de passe', :required => 'required', class:"form-control" %><br />  
+  <%= f.password_field :password_confirmation, placeholder: 'Confirmation', :required => 'required', class:"form-control" %><br />
+  <%= f.submit 'Valider mon inscription', class: 'form-group m-auto btn btn-info'%>
 <% end %>

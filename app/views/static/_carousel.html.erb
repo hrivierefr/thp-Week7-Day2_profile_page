@@ -16,7 +16,7 @@
 		    		<p class="card-text"> <%= g.content %> </p>
 	  			</div>
   			    <div class="card-footer blockquote-footer text-muted">
-			        Postée il y 2 jours<% if g.author != nil %>, par <%= g.author.name %><% end %>
+			        Postée il y <%= ((Time.now - g.created_at)/(3600*24)).to_i %> jours<% if g.author != nil %>, par <%= g.author.name %><% end %>
 		        </div>
 			</div>
 		</div>
