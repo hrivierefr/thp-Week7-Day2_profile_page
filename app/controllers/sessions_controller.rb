@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
     			log_in(user)
     			redirect_to user_path(user.id)
     		else
-    			flash[:danger] = 'Mot de passe incorrect'
-				render 'new'
+    			flash.now[:danger] = 'Mot de passe incorrect'
+				  render 'new'
     		end
 	    else
-			flash[:danger] = 'Aucun utilisateur enregistré avec cet email'
+			flash.now[:danger] = 'Aucun utilisateur enregistré avec cet email'
 			render 'new'
 		end
 	end
