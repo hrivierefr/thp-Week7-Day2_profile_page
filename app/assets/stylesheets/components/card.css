@@ -1,0 +1,21 @@
+.card-container {
+	padding:5px;
+	border: 3px solid black;
+	background: #fff;
+	box-shadow: 0px 6px 4px #888, 0px 6px 0px #888;
+}
+
+.card-content {
+	font-style: italic;
+	background-color: radial-gradient(circle, rgba(148,68,72,1) 0%, rgba(231,79,87,1) 100%);
+	color:white;
+
+}
+
+.card-caption{
+	text-align: center;
+	font-style: italic;
+	background-color: #ccc;
+	color:#333;
+	border: 3px solid black;
+}

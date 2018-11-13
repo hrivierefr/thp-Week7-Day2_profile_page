@@ -1,0 +1,27 @@
+header {
+	min-width: 100%;
+}
+
+.header-links {
+	background-color: #f2f6f9;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 10%;
+}
+
+.header-leftlinks {
+	display: flex;
+	justify-content: flex-end;
+	margin: 0;
+	align-items: center;
+}
+
+.header-leftbuttons {
+	display: flex;
+}
+
+.header-leftbuttons li {
+	margin-right: 10px;
+}

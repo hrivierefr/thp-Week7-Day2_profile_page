@@ -1,0 +1,21 @@
+footer {
+	display: flex;
+	justify-content: space-between;
+	background-color: #f2f6f9;
+	padding: 10px 10%;
+	align-items: center;
+}
+
+.sum-up {
+	font-style: italic;
+}
+
+.footer-links {
+	display: flex;
+	color: #ccc;
+}
+
+.footer-links li {
+	margin: 0 10px;
+	font-size: 35px;
+}

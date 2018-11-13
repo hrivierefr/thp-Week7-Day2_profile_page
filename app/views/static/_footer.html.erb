@@ -1,9 +1,12 @@
-<div class='fixed-bottom bg-secondary text-light'>
-  <div class="container">
-    <nav class="navbar row">
-      <%= link_to 'TheGossipProject', root_path, class:"nav-item text-light " %>
-      <div class='ml-2'><small>Site réalisé par Hugo Riviere le 1er novembre 2018, pour THP (Session 6)</small></div>
-      <div class='blockquote-footer text-light text-right'>Vous êtes le <%= @visitor %>ème visiteur</div>
-    </nav>
-  </div>
-</div>
+<nav>
+    <div>
+        <h3><%= link_to 'TheGossipProject', root_path, class:"" %></h3>
+        <p class='sum-up'>Site réalisé par Hugo Riviere le 13 novembre 2018, pour THP (Session 6)</p>
+    </div>
+    <ul class="footer-links">
+        <li><a href="https://mobile.twitter.com/the_hacking_pro"><i class="fab fa-twitter-square"></i></a></li>
+        <li><a href="https://www.facebook.com/thehackingproject/"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a href="https://www.instagram.com/the_hacking_project/"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://www.linkedin.com/school/the_hacking_project/"><i class="fab fa-linkedin"></i></a></li>
+    </ul>
+</nav>
