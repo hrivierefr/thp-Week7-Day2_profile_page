@@ -1,13 +1,9 @@
-<div class= 'col-8 offset-2'>
-  <div class="card text-center mb-3 shadow-lg">
-    
+  <section class="card">
     <div class="card-header">
-      <div class='row'>
-        <div class='col-6 text-left'><strong>Rumeur n°<%= @gossip.id %></strong></div>
-        <div class='col-6 text-right button font-weight-bold'>
-          <a data-method="create" href="<%= gossip_likes_path(@gossip.id) %>"> <i class="fas fa-thumbs-up"></i>  <%= @gossip.likes.count %>
-          </a>
-        </div>
+      <div class='card-title'>Rumeur n°<%= @gossip.id %></div>
+      <div class='card-like'>
+        <a data-method="create" href="<%= gossip_likes_path(@gossip.id) %>"> <i class="fas fa-thumbs-up"></i>  <%= @gossip.likes.count %>
+        </a>
       </div>
     </div>
 
@@ -15,20 +11,24 @@
       <p class="card-text"> <%= @gossip.content %> </p>
     </div>
 
-    <div class="card-footer text-muted blockquote-footer">
-      Postée il y <%= pluralize(((Time.now - @gossip.created_at)/(3600*24)).to_i, 'jour' %><% if @gossip.anonymous == 0 %>, par <%= @gossip.author.name %><% end %>
+    <div class="card-caption">
+      Postée il y <%= pluralize(((Time.now - @gossip.created_at)/(3600*24)).to_i, 'jour') %><% if @gossip.anonymous == 0 %>, par <%= @gossip.author.name %><% end %>
     </div>
-    <div class="card-footer text-center text-muted">
-      <%= link_to 'Editer', edit_gossip_path(@gossip.id), class: 'btn btn-primary' %>
-      <%= link_to 'Supprimer', gossip_path(@gossip.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer cette rumeur?' }, class: 'btn btn-danger' %>
+    <div class="card-buttons">
+      <li class='btn modification-btn'> <%= link_to edit_gossip_path(@gossip.id) do %>
+        <i class="fas fa-pen"></i>
+        <% end %>
+      </li>
+      <li class='btn delete-btn'> <%= link_to gossip_path(@gossip.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer cette rumeur?' } do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </li>
     </div>
-  </div>
+</section>
 
   <div>
     <%= render 'comments/comment-index' %>
-    <div class='col-8 offset-2'>
-      <%= render 'comments/comment-form' %>
-    </div>
   </div>
-
-</div>
+  <div>
+    <%= render 'comments/comment-form' %>
+  </div>

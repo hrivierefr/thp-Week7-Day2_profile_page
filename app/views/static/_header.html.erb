@@ -1,43 +1,32 @@
-<nav class="header-links">
-    <div class='header-leftlinks'>
+<nav class="header-navbar">
+    <div class='header-link-group'>
       <h2 class='header-brand'><%= link_to 'TheGossipProject', root_path %></h2>
-      <ul class="header-right-buttons">
-        <li> <%= link_to 'Toutes les rumeurs', gossips_path, class:'btn' %>
-        </li>
+      <ul class="header-link-group">
+        <li class='btn'> <%= link_to 'Toutes les rumeurs', gossips_path %></li>
+        <li class='btn'><%= link_to 'Nouveau Gossip', new_gossip_path %></li>
       </ul>
-    </div>
-  <div>
-    <ul class="header-leftbuttons">
-      <li><a href="/"><button class='btn'>Nouveau Gossip</button></a></li>
-    </ul>
+   </div> 
 
-    <% if logged_in? %>
-      <li>
-        <div class='avatar-small'>
-          <a href=''>
-          <img src='https://placeimg.com/250/250/people' alt="Photo de profil" ></a>
-        </div>
+      <ul class="header-link-group">
 
-        <%=link_to 'Mon compte', user_path(@current_user.id), class:"" %>
-      </li>
-      <li>
-        <%=link_to 'Se déconnecter', logout_path, method: :delete, class:"" %>
-      </li>
+        <% if logged_in? %>
+          <li class='avatar-small'>
+              <%= link_to image_tag("https://placeimg.com/250/250/people"), user_path(@current_user.id) %>
+          </li>
+          <li class="btn">
+            <%=link_to 'Se déconnecter', logout_path, method: :delete %>
+          </li>
 
-    <% else %>
-      <li>
-        <%=link_to 'Inscription', new_user_path, class:"nav-item nav-link text-right" %>
-      </li>
-      <li>
-        <%=link_to 'Login', login_path, class:"nav-item nav-link text-right" %>
-      </li>
-          
-    <% end %>
-
-      </div>
-  </div>
-</div>
-
+        <% else %>
+          <li class="btn">
+            <%=link_to 'Inscription', new_user_path %>
+          </li>
+          <li class="btn">
+            <%=link_to 'Login', login_path %>
+          </li>
+        <% end %>
+      </ul>
+</nav>
 
 <!--
 

@@ -1,17 +1,28 @@
-<div>
-	<h2>Vos informations</h2>
-	<p>Votre nom d'utilisateur : <%= @user.name %></p>
-	<p>Votre email : <%= @user.email %> </p>
-	<%= link_to 'Modifier mes informations', edit_user_path(@user.id), class: 'btn btn-primary' %>
-
-
-	<h2>Vos commentaires:</h2>
-	<div>
-		<%= render 'comments/comment-index' %>
+<section class='tabs'>
+	<nav class='profile-info-header'>
+		<li>Vos informations</li>
+		<li class='modification-tab'> <%= link_to edit_user_path(@user.id)  do %>
+			<i class="fas fa-pen"></i>
+ 			<% end %>
+ 		</li>
+	</nav>
+	<div class='cards-container'>
+		<p>Votre nom d'utilisateur : <%= @user.name %></p>
+		<p>Votre email : <%= @user.email %> </p>
 	</div>
+</section>
 
-	<h2>Vos gossips:</h2>
-	<div>
-		<%= render 'gossips/gossip-index' %>
+<section class='tabs'>
+	<nav>
+		<li><%= link_to 'Vos gossips', '#gossips' %></li>
+		<li><%= link_to 'Vos comentaires', '#comments' %></li>
+		<li><%= link_to 'Vos likes', '#likes' %></li>
+	</nav>
+	<div class='cards-container'>
+		<div class='cards'>
+			<div id='comments'><%= render 'comments/comment-index'%></div>
+			<div id='gossips'><%= render 'gossips/gossip-index', id:'gossips' %></div>
+			<div id='likes'><%= render 'gossips/gossip-index', id:'likes' %></div>
+		</div>
 	</div>
-</div>
+</section>
