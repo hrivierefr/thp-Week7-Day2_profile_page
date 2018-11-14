@@ -1,31 +1,32 @@
 <% @comment_selection.each_with_index do |c, i| %>
-  <% if i % 3 == 0 %>
+<% if i % 3 == 0 %>
   <div class='index'>
-  <% end %>
+<% end %>
 
-  <div class= 'card'>
+    <div class= 'card'>
+      <div class="card-header">
+        <%= c.gossip_id %>
+      </div>
+
       <div class="card-body">
-        <p class="card-text"> <%= c.content %> </p>
+        <%= c.content %>
       </div>
 
       <div class="card-caption">
         Posté il y 2 jours<% if c.commenter != 'anonymous' %>, par <%= c.commenter.name %><% end %>
       </div>
 
-    <div class="card-buttons">
-      <li class='btn modification-btn'> <%= link_to edit_gossip_path(@gossip.id) do %>
-        <i class="fas fa-pen"></i>
-        <% end %>
-      </li>
-      <li class='btn delete-btn'> <%= link_to gossip_comment_path(c.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer ce commentaire?' } do %>
-        <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </li>
+      <% if current_user.id == c.commenter_id %>
+        <div class="card-buttons">
+          <li class='btn delete-btn'> <%= link_to gossip_comment_path(c.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer ce commentaire?' } do %>
+            <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </li>
+        </div>
+      <% end %>
     </div>
-  </div>
 
   <% if i % 3 == 2 %>
     </div>
   <% end %>
 <% end %> 
-</div>

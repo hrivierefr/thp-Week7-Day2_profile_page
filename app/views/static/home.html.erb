@@ -1,17 +1,13 @@
-<div>
-
+<div class= 'home-gossips'>
 	<% if Gossip.all.count >= 3 %>
-		<%= render 'carousel' %>
+		<h4>Voici les derniers gossips postés sur le réseau :</h4>
+		<%= render 'gossips/gossip-index' %>
 	<% else %>
 		<h4> Il n'y a pas assez de rumeurs sur le site !!</h4>
 	<% end %>
-
-	<div class= "text-center mb-5">
-		<%= link_to 'Parcourir toutes les rumeurs', gossips_path, class:"btn btn-primary" %>
-	</div>
-	
-	<div class= "text-center mb-5">
-		<%= link_to "A toi de gossiper !", signup_path, class: "btn btn-info m-auto" %>
-	</div>
+</div>
+<div class= "home-buttons">
+	<%= link_to 'Parcourir toutes les rumeurs', gossips_path, class:"btn" %>
+	<%= link_to "A toi de gossiper !", signup_path, class: "btn" %>
 </div>
 

@@ -14,6 +14,9 @@
     <div class="card-caption">
       Postée il y <%= pluralize(((Time.now - @gossip.created_at)/(3600*24)).to_i, 'jour') %><% if @gossip.anonymous == 0 %>, par <%= @gossip.author.name %><% end %>
     </div>
+
+     <% if current_user.id = @gossip.author_id %>
+
     <div class="card-buttons">
       <li class='btn modification-btn'> <%= link_to edit_gossip_path(@gossip.id) do %>
         <i class="fas fa-pen"></i>
@@ -24,6 +27,9 @@
         <% end %>
       </li>
     </div>
+    <% end %>
+
+
 </section>
 
   <div>

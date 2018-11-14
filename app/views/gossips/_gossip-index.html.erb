@@ -1,36 +1,41 @@
 <% @gossip_selection.each_with_index do |g, i| %>
   <% if i % 3 == 0 %>
-    <div class='row mb-3'>
+    <div class='index'>
   <% end %>
-  <div class= 'col-4'>
-    <div class="card text-center shadow-lg">
 
-      <div class="card-header">
-        <div class='row'>
-          <div class='col-8 text-left'><strong>Rumeur n°<%= g.id %></strong></div>
-          <div class='col-2 button p-0 text-right font-weight-bold'>
-            <i class="fas fa-comments"></i>  <%= g.comments.count %> 
-          </div>
-          <div class='col-2 button p-0 font-weight-bold'><a data-method="create" href="<%= gossip_likes_path(g.id) %>" class='card-link'><i class="fas fa-thumbs-up"></i>  <%= g.likes.count %></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-body">
-        <p class="card-text"> <%= g.content %> </p>
-      </div>
-
-      <div class="card-footer blockquote-footer text-muted">
-        Postée il y <%= pluralize(((Time.now - g.created_at)/(3600*24)).to_i, 'jour')%><% if g.anonymous == 0 %>, par <%= g.author.name %><% end %>
-      </div>
-
-      <div class="card-footer text-center text-muted">
-        <%= link_to 'Détails', gossip_path(g.id), class: 'btn btn-info mb-1' %>
-        <%= link_to 'Editer', edit_gossip_path(g.id), class: 'btn btn-primary  mb-1' %>
-        <%= link_to 'Supprimer', gossip_path(g.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer cette rumeur ?' }, class: 'btn btn-danger mb-1' %>
+  <section class="card">
+    <div class="card-header">
+      <div class='card-title'>Rumeur n°<%= g.id %></div>
+      <div class='card-metrics'>
+        <a href="<%= gossip_path(g.id) %>"><i class="fas fa-comments"></i>  <%= g.comments.count %> </a></a>
+        
+        <a data-method="create" href="<%= gossip_likes_path(g.id) %>"> <i class="fas fa-thumbs-up"></i>  <%= g.likes.count %></a>
       </div>
     </div>
-  </div>
+
+    <div class="card-body">
+      <p class="card-text"> <%= g.content %> </p>
+    </div>
+
+    <div class="card-caption">
+      Postée il y <%= pluralize(((Time.now - g.created_at)/(3600*24)).to_i, 'jour') %><% if g.anonymous == 0 %>, par <%= g.author.name %><% end %>
+    </div>
+
+     <% if current_user.id == g.author_id %>
+        <div class="card-buttons">
+          <li class='btn modification-btn'> <%= link_to edit_gossip_path(g.id) do %>
+            <i class="fas fa-pen"></i>
+            <% end %>
+          </li>
+          <li class='btn delete-btn'> <%= link_to gossip_path(g.id), method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer ce commentaire?' } do %>
+            <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </li>
+        </div>
+      <% end %>
+
+  </section>
+
   <% if i % 3 == 2 %>
     </div>
   <% end %>

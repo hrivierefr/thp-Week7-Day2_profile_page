@@ -1,6 +1,14 @@
-<%= form_for :gossip,  url: { action: 'create', controller: 'gossips'}, :authenticity_token => true do |f| %>
-  	Balance ta rumeur<%= f.text_area :content, class:"form-control col-sm-10", :required => 'required'%><br />
-  	Souhaitez-vous publier en restant anonyme ?<%= f.check_box :anonymous, class:"form-control" %><br />
-  	<%= f.hidden_field :author_id, value: rand(User.first.id..User.last.id) %>
-  	<%= f.submit 'Créer cette rumeur' , class: 'form-group text-center btn btn-info'%>
+<div class='card'>
+	<%= form_for :gossip,  url: { action: 'create', controller: 'gossips'}, :authenticity_token => true do |f| %>
+	<div class='card-body'>
+  	<h5>Balance ta rumeur</h5><br/>
+  	<%= f.text_area :content, class:"", :required => 'required'%>
+  	</div>
+	<div class='card-caption'>
+  	Souhaitez-vous publier en restant anonyme ?<%= f.check_box :anonymous, class:"form-control" %>
+  	</div>
+  	<%= f.hidden_field :author_id, value: current_user.id %>
+</div>
+
+  	<%= f.submit 'Créer cette rumeur' , class: 'btn'%>
 <% end %>

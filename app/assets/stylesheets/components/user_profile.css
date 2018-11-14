@@ -1,0 +1,18 @@
+.profile-info-header {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.home-buttons {
+	margin-top: 30px;
+}
+
+.home-gossips {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.home-gossips h4 {
+	text-align: center;
+}

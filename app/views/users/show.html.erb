@@ -20,9 +20,9 @@
 	</nav>
 	<div class='cards-container'>
 		<div class='cards'>
+			<div id='gossips'><%= render 'gossips/gossip-index' %></div>
 			<div id='comments'><%= render 'comments/comment-index'%></div>
-			<div id='gossips'><%= render 'gossips/gossip-index', id:'gossips' %></div>
-			<div id='likes'><%= render 'gossips/gossip-index', id:'likes' %></div>
+			<div id='likes'></div>
 		</div>
 	</div>
 </section>
